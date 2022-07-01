@@ -1,0 +1,15 @@
+.wallet {
+  float: right;
+  border: 1px solid black;
+  border-radius: 12px;
+  padding: 10px;
+}
+
+.account {
+  display: flex;
+  align-items: center;
+}
+
+.account img {
+  margin-right: 10px;
+}
