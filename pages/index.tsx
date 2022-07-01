@@ -4,7 +4,7 @@ import styles from '../styles/Home.module.css'
 import { ChainId, Chain, TokenList, Path, SocketQuote, SocketTx } from 'socket-v2-sdk'
 import { useEffect, useState } from 'react'
 import { socket } from '../utils/socket'
-import Wallet from '../components/wallet'
+import Wallet from '../components/Wallet'
 import { useWallet } from '../hooks/useWallet'
 import { WalletContext } from '../context/WalletContext'
 import TokenSelect from '../components/TokenSelect'
@@ -119,7 +119,7 @@ const Home: NextPage = () => {
           </header>
 
           <Image src={Icon} alt="Spongy" width="200" height="200" />
-          <p className={styles.description}>Pick your trade!</p>
+          <p style={{ marginBottom: 20, marginTop: 0, fontWeight: 'bold' }}>Spongy.exchange</p>
 
           {latestTx && (
             <textarea rows={6} cols={140}>
@@ -127,41 +127,50 @@ const Home: NextPage = () => {
             </textarea>
           )}
 
-          <ChainSelect
-            label="Transfer From"
-            value={fromChainId}
-            chains={chains}
-            onChange={(chainId) => setFromChainId(chainId)}
-          />
+          <div className={styles.chains}>
+            <ChainSelect
+              label="Transfer From"
+              value={fromChainId}
+              chains={chains}
+              onChange={(chainId) => setFromChainId(chainId)}
+            />
 
-          <ChainSelect
-            label="Transfer To"
-            value={toChainId}
-            chains={chains}
-            onChange={(chainId) => setToChainId(chainId)}
-          />
+            <ChainSelect
+              label="Transfer To"
+              value={toChainId}
+              chains={chains}
+              onChange={(chainId) => setToChainId(chainId)}
+            />
+          </div>
 
           {tokenLists && (
-            <div>
-              <div>
+            <div className={styles.tokens}>
+              <label>Send</label>
+              <div className={styles.tokenSelect}>
                 <input
+                  className={styles.amountInput}
                   type="text"
                   value={amount}
                   onChange={(e) => setAmount(e.target.value)}
                   placeholder="0.0"
                 />
                 <TokenSelect
-                  label="You send"
                   value={fromTokenAddress}
                   onChange={(address: string) => setFromTokenAddress(address)}
                   list={tokenLists.from}
                 />
               </div>
 
-              <div>
-                <input type="text" disabled value={receiveAmount} placeholder="0.0" />
+              <label>Receive</label>
+              <div className={styles.tokenSelect}>
+                <input
+                  type="text"
+                  disabled
+                  value={receiveAmount}
+                  placeholder="0.0"
+                  className={styles.amountInput}
+                />
                 <TokenSelect
-                  label="You receive"
                   value={toTokenAddress}
                   onChange={(address: string) => setToTokenAddress(address)}
                   list={tokenLists.to}

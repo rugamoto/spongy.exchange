@@ -10,13 +10,36 @@
 }
 
 .main {
-  min-height: 100vh;
   padding: 4rem 0;
-  flex: 1;
+  width: 420px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.chains {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.tokens {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.tokenSelect {
+  display: flex;
+  margin-bottom: 10px;
+  margin-top: 5px;
+}
+
+.amountInput {
+  flex: 1;
+  font-size: 16px;
+  margin-right: 20px;
+  padding-left: 10px;
 }
 
 .footer {
