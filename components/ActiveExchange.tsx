@@ -1,7 +1,5 @@
-import Image from 'next/image'
-import { useContext, useEffect, useState } from 'react'
 import { MoonLoader } from 'react-spinners'
-import { Chain, ChainId, SocketQuote, SocketTx } from 'socket-v2-sdk'
+import { SocketQuote, SocketTx } from 'socket-v2-sdk'
 
 const ActiveExchange = ({
   quote,

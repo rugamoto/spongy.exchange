@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import { useContext, useEffect, useState } from 'react'
 import { Chain, ChainId } from 'socket-v2-sdk'
 import { WalletContext } from '../context/WalletContext'
