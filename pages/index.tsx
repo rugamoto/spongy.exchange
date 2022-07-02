@@ -191,11 +191,7 @@ const Home: NextPage = () => {
           )}
         </main>
 
-        <footer className={styles.footer}>
-          <a href="https://rainbow.me" target="_blank" rel="noopener noreferrer">
-            Made with ❤️ by anons all over the interwebs
-          </a>
-        </footer>
+        <footer className={styles.footer}>Made with ❤️ by anons all over the interwebs</footer>
       </div>
     </WalletContext.Provider>
   )
