@@ -17,6 +17,7 @@ jobs:
         uses: actions/setup-node@v2
       - run: yarn
       - run: yarn export
+      - run: touch ./out/.nojekyll
         env:
           CI: true
 
