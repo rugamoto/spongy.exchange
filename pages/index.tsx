@@ -13,6 +13,7 @@ import ChainSelect from '../components/ChainSelect'
 import { ethers } from 'ethers'
 import Image from 'next/image'
 import Icon from '../public/icon.svg'
+import ActiveExchange from '../components/ActiveExchange'
 
 const Home: NextPage = () => {
   const wallet = useWallet()
@@ -30,17 +31,9 @@ const Home: NextPage = () => {
 
   const [amount, setAmount] = useState<string>()
   const [quote, setQuote] = useState<SocketQuote | null>(null)
+  const [isQuoteDone, setIsQuoteDone] = useState<boolean>(false)
 
   useEffect(() => {
-    console.log(
-      wallet.account,
-      tokenLists,
-      fromChainId,
-      toChainId,
-      fromTokenAddress,
-      toTokenAddress,
-      amount
-    )
     if (
       wallet.account &&
       tokenLists &&
@@ -97,11 +90,21 @@ const Home: NextPage = () => {
     const connectedSocket = socket.connect(wallet.provider)
     await connectedSocket.web3Start(quote, {
       onTx: (tx) => {
-        console.log(tx)
         setLatestTx(tx)
       },
     })
-    console.log('DONE!')
+    setIsQuoteDone(true)
+  }
+
+  function resetQuote() {
+    setQuote(null)
+    setIsQuoteDone(false)
+    setLatestTx(undefined)
+    setAmount(undefined)
+  }
+
+  async function handleQuoteDone() {
+    resetQuote()
   }
 
   return (
@@ -121,67 +124,72 @@ const Home: NextPage = () => {
           <Image src={Icon} alt="Spongy" width="200" height="200" />
           <p style={{ marginBottom: 20, marginTop: 0, fontWeight: 'bold' }}>Spongy.exchange</p>
 
-          {latestTx && (
-            <textarea rows={6} cols={140}>
-              {JSON.stringify(latestTx, null, 2)}
-            </textarea>
-          )}
-
-          <div className={styles.chains}>
-            <ChainSelect
-              label="Transfer From"
-              value={fromChainId}
-              chains={chains}
-              onChange={(chainId) => setFromChainId(chainId)}
+          {quote && latestTx ? (
+            <ActiveExchange
+              quote={quote}
+              tx={latestTx}
+              done={isQuoteDone}
+              onClickDone={handleQuoteDone}
             />
-
-            <ChainSelect
-              label="Transfer To"
-              value={toChainId}
-              chains={chains}
-              onChange={(chainId) => setToChainId(chainId)}
-            />
-          </div>
-
-          {tokenLists && (
-            <div className={styles.tokens}>
-              <label>Send</label>
-              <div className={styles.tokenSelect}>
-                <input
-                  className={styles.amountInput}
-                  type="text"
-                  value={amount}
-                  onChange={(e) => setAmount(e.target.value)}
-                  placeholder="0.0"
+          ) : (
+            <div>
+              <div className={styles.chains}>
+                <ChainSelect
+                  label="Transfer From"
+                  value={fromChainId}
+                  chains={chains}
+                  onChange={(chainId) => setFromChainId(chainId)}
                 />
-                <TokenSelect
-                  value={fromTokenAddress}
-                  onChange={(address: string) => setFromTokenAddress(address)}
-                  list={tokenLists.from}
+
+                <ChainSelect
+                  label="Transfer To"
+                  value={toChainId}
+                  chains={chains}
+                  onChange={(chainId) => setToChainId(chainId)}
                 />
               </div>
 
-              <label>Receive</label>
-              <div className={styles.tokenSelect}>
-                <input
-                  type="text"
-                  disabled
-                  value={receiveAmount}
-                  placeholder="0.0"
-                  className={styles.amountInput}
-                />
-                <TokenSelect
-                  value={toTokenAddress}
-                  onChange={(address: string) => setToTokenAddress(address)}
-                  list={tokenLists.to}
-                />
-              </div>
+              {tokenLists && (
+                <div className={styles.tokens}>
+                  <label>Send</label>
+                  <div className={styles.tokenSelect}>
+                    <input
+                      className={styles.amountInput}
+                      type="text"
+                      value={amount}
+                      onChange={(e) => setAmount(e.target.value)}
+                      placeholder="0.0"
+                    />
+                    <TokenSelect
+                      value={fromTokenAddress}
+                      onChange={(address: string) => setFromTokenAddress(address)}
+                      list={tokenLists.from}
+                    />
+                  </div>
+
+                  <label>Receive</label>
+                  <div className={styles.tokenSelect}>
+                    <input
+                      type="text"
+                      disabled
+                      value={receiveAmount}
+                      placeholder="0.0"
+                      className={styles.amountInput}
+                    />
+                    <TokenSelect
+                      value={toTokenAddress}
+                      onChange={(address: string) => setToTokenAddress(address)}
+                      list={tokenLists.to}
+                    />
+                  </div>
+                </div>
+              )}
+
+              <button onClick={startQuote} disabled={!quote}>
+                Exchange!
+              </button>
             </div>
           )}
-
-          <button onClick={startQuote} disabled={!quote}>
-            Exchange!
-          </button>
         </main>
 
         <footer className={styles.footer}>
