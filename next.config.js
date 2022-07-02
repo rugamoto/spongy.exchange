@@ -8,4 +8,8 @@ const nextConfig = {
   },
 }
 
+if (process.env.NODE_ENV === 'production') {
+  nextConfig.basePath = '/spongy.exchange'
+}
+
 module.exports = nextConfig
