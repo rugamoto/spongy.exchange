@@ -18,14 +18,14 @@ const ActiveExchange = ({
     <div>
       <div>
         <strong>
-          {quote.path.fromToken.name} -&gt; {quote.path.toToken.name} ({quote.route.totalUserTx}{' '}
+          {quote.path.fromToken.name} -&gt; {quote.path.toToken.name}
         </strong>
-        Transactions)
+        ({quote.route.totalUserTx} Transactions)
       </div>
       {done ? (
         <div>
           <p>Exchange Done</p>
-          <button onClick={onClickDone}>Done</button>
+          <button onClick={onClickDone}>Ok</button>
         </div>
       ) : (
         <div>
