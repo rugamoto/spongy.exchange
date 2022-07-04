@@ -88,7 +88,7 @@ const Home: NextPage = () => {
     if (!wallet.provider) throw new Error('No provider detected. Are you connected?')
     if (!quote) throw new Error('No quote detected. Did you get a quote?')
     const connectedSocket = socket.connect(wallet.provider)
-    await connectedSocket.web3Start(quote, {
+    await connectedSocket.start(quote, {
       onTx: (tx) => {
         setLatestTx(tx)
       },

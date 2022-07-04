@@ -4211,10 +4211,10 @@ slash@^3.0.0:
   resolved "https://registry.yarnpkg.com/slash/-/slash-3.0.0.tgz#6539be870c165adbd5240220dbe361f1bc4d4634"
   integrity sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==
 
-socket-v2-sdk@^1.10.0:
-  version "1.10.0"
-  resolved "https://registry.yarnpkg.com/socket-v2-sdk/-/socket-v2-sdk-1.10.0.tgz#2fb03d9ffb4a739c34488c6ae2e955a82816e019"
-  integrity sha512-mc/gfAb3HX+UeynSyHdyoKBf1jZXJgBnkZGCzoXZ5ZLqIIRt9G2wJJjn2QRGtTdle2fhrSUou2ia47bxc1Sc6g==
+socket-v2-sdk@^1.12.0:
+  version "1.12.0"
+  resolved "https://registry.yarnpkg.com/socket-v2-sdk/-/socket-v2-sdk-1.12.0.tgz#68324d31f2afb983d1b241bed9ada31261bce32d"
+  integrity sha512-4+EidYN3/ZkY/tk9h1NEvLm2e7OEUEf/5/PUCsGeB7LWltjb8SIE1bNieHSM21xfN1LWuvCaauAgHMl0S3g80w==
   dependencies:
     "@socket.tech/ll-core" "^0.1.8"
     axios "^0.27.2"
