@@ -53,6 +53,7 @@ const Home: NextPage = () => {
           amount: ethers.utils.parseUnits(amount, fromToken.decimals).toString(),
           path,
         })
+        console.log(quote)
         setQuote(quote)
       }
 
@@ -90,10 +91,11 @@ const Home: NextPage = () => {
     const connectedSocket = socket.connect(wallet.provider)
     await connectedSocket.start(quote, {
       onTx: (tx) => {
+        console.log(tx)
         setLatestTx(tx)
       },
+      onDone: () => setIsQuoteDone(true),
     })
-    setIsQuoteDone(true)
   }
 
   function resetQuote() {

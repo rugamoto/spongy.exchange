@@ -811,10 +811,10 @@
   resolved "https://registry.yarnpkg.com/@rushstack/eslint-patch/-/eslint-patch-1.1.4.tgz#0c8b74c50f29ee44f423f7416829c0bf8bb5eb27"
   integrity sha512-LwzQKA4vzIct1zNZzBmRKI9QuNpLgTQMEjsQLf3BXuGYb3QPTP4Yjf6mkdX+X1mYttZ808QpOwAzZjv28kq7DA==
 
-"@socket.tech/ll-core@^0.1.8":
-  version "0.1.8"
-  resolved "https://registry.yarnpkg.com/@socket.tech/ll-core/-/ll-core-0.1.8.tgz#32db8b198d606825d1054b54c6a13341b2a18a2c"
-  integrity sha512-K7jEQPXvmkIh9EF4Y7xPxmHvAR8ITuv32A77pvZeadQ4PP8yrD/Ok7tG+VaG9TQEXgzR0W+cAZU2OmoGxqs+4g==
+"@socket.tech/ll-core@^0.1.14":
+  version "0.1.14"
+  resolved "https://registry.yarnpkg.com/@socket.tech/ll-core/-/ll-core-0.1.14.tgz#16a0160da4d3fd702289f179147a2b06a4f49b9f"
+  integrity sha512-6gkUVN/RAoN1ZnjPcq5O9tmyagLXnWFjLDa5G8jz4Y+zFatwr9x345yFPJFHcRB59WfRMYpm2SxrPdpYAJiX8A==
 
 "@swc/helpers@0.4.2":
   version "0.4.2"
@@ -4211,12 +4211,12 @@ slash@^3.0.0:
   resolved "https://registry.yarnpkg.com/slash/-/slash-3.0.0.tgz#6539be870c165adbd5240220dbe361f1bc4d4634"
   integrity sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==
 
-socket-v2-sdk@^1.12.0:
-  version "1.12.0"
-  resolved "https://registry.yarnpkg.com/socket-v2-sdk/-/socket-v2-sdk-1.12.0.tgz#68324d31f2afb983d1b241bed9ada31261bce32d"
-  integrity sha512-4+EidYN3/ZkY/tk9h1NEvLm2e7OEUEf/5/PUCsGeB7LWltjb8SIE1bNieHSM21xfN1LWuvCaauAgHMl0S3g80w==
+socket-v2-sdk@^1.17.0:
+  version "1.17.0"
+  resolved "https://registry.yarnpkg.com/socket-v2-sdk/-/socket-v2-sdk-1.17.0.tgz#58c6a966b1a0006d11245e17a1f1826f639b8189"
+  integrity sha512-ETwlt9ClYqenMffZAPJrGqlMSzIFrmScMykn67u3AyW/FoEK2TuNFtU0kLrK2ox6pJ2J939tHkg2XgNzvPk2ZA==
   dependencies:
-    "@socket.tech/ll-core" "^0.1.8"
+    "@socket.tech/ll-core" "^0.1.14"
     axios "^0.27.2"
     ethers "^5.6.5"
     form-data "^4.0.0"
